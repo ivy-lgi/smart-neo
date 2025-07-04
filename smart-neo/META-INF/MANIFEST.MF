@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Axon Ivy Smart Neo
+Bundle-SymbolicName: smart-neo;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-ActivationPolicy: lazy
+Export-Package: com.axonivy.smart.neo
