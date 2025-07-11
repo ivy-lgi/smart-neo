@@ -11,5 +11,5 @@ Prototype of the Smart Neo
 Prototype of the Smart Neo
 
 ```
-@variables.yaml@
+@ivy.yaml@
 ```

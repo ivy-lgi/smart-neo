@@ -6,7 +6,7 @@
   <packaging>pom</packaging>
 
   <properties>
-    <variables.yaml.file>../smart-neo/res/variables.yaml</variables.yaml.file>
+    <ivy.yaml.file>../smart-neo/res/ivy.yaml</ivy.yaml.file>
   </properties>
 
   <build>
@@ -45,9 +45,9 @@
                  <copy todir="${project.build.directory}">
                   <fileset dir="." includes="README*.md" />
                 </copy>
-                <loadfile property="variables.yaml" srcFile="${variables.yaml.file}" encoding="UTF-8" failonerror="false" />
-                <replace file="${project.build.directory}/README.md" token="@variables.yaml@" value="${variables.yaml}" />
-                <replace file="${project.build.directory}/README_DE.md" token="@variables.yaml@" value="${variables.yaml}"/>
+                <loadfile property="ivy.yaml" srcFile="${ivy.yaml.file}" encoding="UTF-8" failonerror="false" />
+                <replace file="${project.build.directory}/README.md" token="@ivy.yaml@" value="${ivy.yaml}" />
+                <replace file="${project.build.directory}/README_DE.md" token="@ivy.yaml@" value="${ivy.yaml}"/>
               </target>
             </configuration>
             <goals>
