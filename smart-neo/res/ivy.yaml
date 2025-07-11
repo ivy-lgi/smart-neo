@@ -1,0 +1,4 @@
+SmartNeo:
+  OpenAi:
+    ApiKey: "OPEN_AI_API_KEY"
+    Model: "OPEN_AI_MODEL"

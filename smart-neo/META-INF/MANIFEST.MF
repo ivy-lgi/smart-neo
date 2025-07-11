@@ -6,4 +6,7 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-ActivationPolicy: lazy
 Require-Bundle: javax.ws.rs,
  ch.ivyteam.ivy.engine.rest.service,
- ch.ivyteam.lib.swagger.annotations
+ ch.ivyteam.lib.swagger.annotations,
+ ch.ivyteam.ivy.jersey.client,
+ ch.ivyteam.ivy.configuration,
+ ch.ivyteam.lib.jackson
