@@ -3,7 +3,7 @@
 <target name="ivy">
 	<locations>
 		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-			<repository location="https://p2.axonivy.com/p2/nightly/"/>
+			<repository location="https://p2.ivyteam.ch/p2/nightly/"/>
 			<unit id="ch.ivyteam.ivy.designer.product" version="13.2.0"/>
 		</location>
 	</locations>
