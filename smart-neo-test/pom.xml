@@ -1,14 +1,15 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.axonivy.smart.neo</groupId>
-  <artifactId>smart-neo</artifactId>
+  <artifactId>smart-neo-test</artifactId>
   <version>1.0.0-SNAPSHOT</version>
-  <packaging>eclipse-plugin</packaging>
+  <packaging>eclipse-test-plugin</packaging>
 
   <properties>
-    <java.compiler.compliance>21</java.compiler.compliance>
     <tycho.version>4.0.10</tycho.version>
     <ivy.release>nightly</ivy.release>
+    <tester.version>13.1.0</tester.version>
+    <junit.version>5.12.2</junit.version>
   </properties>
 
   <repositories>
@@ -19,8 +20,28 @@
     </repository>
   </repositories>
 
+  <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>${junit.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>3.27.3</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
   <build>
-	  <sourceDirectory>src</sourceDirectory>
+    <testSourceDirectory>test</testSourceDirectory>
     <plugins>
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
@@ -35,6 +56,19 @@
           <source>${java.compiler.compliance}</source>
           <target>${java.compiler.compliance}</target>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.5.3</version>
+        <executions>
+          <execution>
+            <id>unit.test</id>
+            <goals>
+              <goal>test</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
 
@@ -60,6 +94,16 @@
           <groupId>org.eclipse.tycho</groupId>
           <artifactId>target-platform-configuration</artifactId>
           <version>${tycho.version}</version>
+          <configuration>
+            <target>
+              <artifact>
+                <groupId>com.axonivy.smart.neo</groupId>
+                <artifactId>smart-neo</artifactId>
+                <version>${project.version}</version>
+                <classifier>target-platform/ivy</classifier>
+              </artifact>
+            </target>
+          </configuration>
         </plugin>
 
         <plugin>
