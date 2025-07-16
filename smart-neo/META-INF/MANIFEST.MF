@@ -3,9 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Axon Ivy Smart Neo
 Bundle-SymbolicName: smart-neo;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Vendor: Axon Ivy AG
 Bundle-ActivationPolicy: lazy
-Eclipse-ExtensibleAPI: true
 Require-Bundle: javax.ws.rs,
  ch.ivyteam.ivy.engine.rest.service,
  ch.ivyteam.lib.swagger.annotations,
