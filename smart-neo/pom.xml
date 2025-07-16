@@ -6,21 +6,33 @@
   <packaging>eclipse-plugin</packaging>
 
   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.compiler.compliance>21</java.compiler.compliance>
     <tycho.version>4.0.10</tycho.version>
     <ivy.release>nightly</ivy.release>
+    <tester.version>13.1.0</tester.version>
   </properties>
 
   <repositories>
     <repository>
       <id>ivy.nightly.release</id>
       <layout>p2</layout>
-      <url>https://p2.ivyteam.ch/p2/${ivy.release}/</url> 
+      <url>https://p2.axonivy.com/p2/${ivy.release}/</url> 
     </repository>
   </repositories>
 
+  <dependencies>
+    <dependency>
+      <groupId>com.axonivy.ivy.test</groupId>
+      <artifactId>unit-tester</artifactId>
+      <version>${tester.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
   <build>
-	  <sourceDirectory>src</sourceDirectory>
+	<sourceDirectory>src</sourceDirectory>
+    <testSourceDirectory>src_test</testSourceDirectory>
     <plugins>
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
@@ -35,6 +47,19 @@
           <source>${java.compiler.compliance}</source>
           <target>${java.compiler.compliance}</target>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.5.3</version>
+        <executions>
+          <execution>
+            <id>unit.test</id>
+            <goals>
+              <goal>test</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
 
