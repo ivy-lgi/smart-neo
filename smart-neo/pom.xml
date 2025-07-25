@@ -31,7 +31,7 @@
   </dependencies>
 
   <build>
-	<sourceDirectory>src</sourceDirectory>
+	  <sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>src_test</testSourceDirectory>
     <plugins>
       <plugin>
@@ -60,42 +60,6 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
-      <plugin>
-        <groupId>io.swagger.core.v3</groupId>
-        <artifactId>swagger-maven-plugin</artifactId>
-        <version>2.2.34</version>
-        <executions>
-          <execution>
-            <phase>compile</phase>
-            <goals>
-              <goal>resolve</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <outputPath>${project.build.directory}/openapi</outputPath>
-          <outputFormat>JSON</outputFormat>
-          <prettyPrint>true</prettyPrint>
-          <configurationFilePath>${project.basedir}/openapi-config.yaml</configurationFilePath>
-        </configuration>
-        <dependencies>
-          <dependency>
-            <groupId>io.swagger.core.v3</groupId>
-            <artifactId>swagger-jaxrs2</artifactId>
-            <version>2.2.34</version>
-          </dependency>
-          <dependency>
-            <groupId>javax.ws.rs</groupId>
-            <artifactId>javax.ws.rs-api</artifactId>
-            <version>2.1.1</version>
-          </dependency>
-          <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
-          </dependency>
-        </dependencies>
       </plugin>
     </plugins>
 
@@ -193,19 +157,6 @@
                     <ignore></ignore>
                   </action>
                 </pluginExecution>
-                <pluginExecution>
-                  <pluginExecutionFilter>
-                    <groupId>io.swagger.core.v3</groupId>
-                    <artifactId>swagger-maven-plugin</artifactId>
-                    <versionRange>[2.2.34,)</versionRange>
-                    <goals>
-                      <goal>resolve</goal>
-                    </goals>
-                  </pluginExecutionFilter>
-                  <action>
-                    <ignore />
-                  </action>
-                </pluginExecution>
               </pluginExecutions>
             </lifecycleMappingMetadata>
           </configuration>
@@ -213,4 +164,50 @@
       </plugins>
     </pluginManagement>
   </build>
+  
+  <profiles>
+    <profile>
+      <id>generate-openapi</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-maven-plugin</artifactId>
+            <version>2.2.34</version>
+            <executions>
+              <execution>
+                <phase>compile</phase>
+                <goals>
+                  <goal>resolve</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <outputPath>${project.build.directory}/openapi</outputPath>
+              <outputFormat>JSON</outputFormat>
+              <prettyPrint>true</prettyPrint>
+              <configurationFilePath>${project.basedir}/openapi-config.yaml</configurationFilePath>
+            </configuration>
+            <dependencies>
+              <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-jaxrs2</artifactId>
+                <version>2.2.34</version>
+              </dependency>
+              <dependency>
+                <groupId>javax.ws.rs</groupId>
+                <artifactId>javax.ws.rs-api</artifactId>
+                <version>2.1.1</version>
+              </dependency>
+              <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>4.0.1</version>
+              </dependency>
+            </dependencies>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
